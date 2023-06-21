@@ -33,10 +33,11 @@ namespace PacMan.Controller
         {
             NavigateToUserCmd = new RelayCommand(NavigateToUser);
             NavigateToGameCmd = new RelayCommand(NavigateToGame);
+            
+            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
+            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
+            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
 
-            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
-            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
-            _userController.Users.Add(new Model.UserModel { FirstName = "toto", LastName = "tata" });
             _worldController.GameSetup();
             NavigateToUser();
         }

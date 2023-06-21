@@ -6,5 +6,37 @@
              xmlns:local="clr-namespace:PacMan.View" xmlns:controller="clr-namespace:PacMan.Controller" d:DataContext="{d:DesignInstance Type=controller:UserController}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Width="80" Grid.RowSpan="2" ItemsSource="{Binding Users}" SelectedItem="{Binding UserSelected}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="User name:"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text=" - "></TextBlock>
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Insert FirstName"></TextBlock>
+            <TextBox Text="{Binding UserSelected.FirstName}"></TextBox>
+            <TextBlock Text="Insert LastName"></TextBlock>
+            <TextBox Text="{Binding UserSelected.LastName}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Content="Add new User" Command="{Binding SubmitCmd}"></Button>
+        </StackPanel>
+    </Grid>
 </UserControl>

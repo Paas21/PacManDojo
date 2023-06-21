@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "PacManServer";
+
+package PacManServer;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+service Pacman{
+	rpc InitializePackman() returns(PackmanInitialize) ;
+	rpc PacmanStream(steam ClientServerStream) returns (steam ServerCientStream);
+}
+
+message PackmanInitialize{
+	string color = 1;
+	double XPosition = 2;
+	double YPosition = 3;
+	double Width = 4;
+	double Height = 5;
+}
+
+enum KeyInput{
+	UP = 1;
+	DOWN = 2;
+	LEFT = 3;
+	RIGHT = 4;
+}
+
+message ClientServerStream{
+	KeyInput KeybordInput = 1;
+}
+
+message ServerCientStream{
+	double XPosition = 2;
+	double YPosition = 3;
+}
