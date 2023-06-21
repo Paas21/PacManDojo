@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PacMan.Controller;
 
-namespace PacMan
+namespace PacMan.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour WorldView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WorldView : UserControl
     {
-        public MainWindow()
+        public WorldView()
         {
             InitializeComponent();
-            DataContext = new MainController();
         }
     }
 }

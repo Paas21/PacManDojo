@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PacMan"
+        xmlns:util="clr-namespace:PacMan.Util" xmlns:view="clr-namespace:PacMan.View" xmlns:controller="clr-namespace:PacMan.Controller" 
+        d:DataContext="{d:DesignInstance Type=controller:MainController}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="PAC Man Game WPF" Height="760" Width="820" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type controller:UserController}">
+            <view:UserView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type controller:WorldController}">
+            <view:WorldView/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Users" Command="{Binding NavigateToUserCmd}" Margin="8"/>
+            <Button Content="Game" Command="{Binding NavigateToGameCmd}" Margin="8"/>
+        </StackPanel>
+        <ContentControl Grid.Row="1" Content="{Binding SelectedView}"/>
     </Grid>
 </Window>
